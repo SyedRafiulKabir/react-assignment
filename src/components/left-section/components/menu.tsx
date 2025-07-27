@@ -1,15 +1,13 @@
 import { useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const items: string[] = [
-  'সিটি করে যা শিখবেন',
-  'কোর্স সম্পর্কে বিস্তারিত',
-  'কোর্স এক্সক্লুসিভ ফিচার',
-  'এই কোর্সের সাথে ফ্রি পাচ্ছেন–',
-  'শিক্ষার্থী...',
-];
 
-const Menus: React.FC = () => {
+
+interface MenusProps {
+  menuItems: (string | undefined)[];
+}
+
+const Menus = ({menuItems}: MenusProps) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -20,33 +18,36 @@ const Menus: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center gap-2 px-2">
-      <button
-        onClick={() => scroll('left')}
-        className="p-2 rounded-full bg-gray-400 text-white"
-        aria-label="Scroll Left"
-      >
-        <ChevronLeft size={20} />
-      </button>
+    <div className="sticky top-[65px] z-20 hidden bg-white md:block">
+      <div className="relative">
+        {/* Scroll Buttons */}
+        <button
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 px-2 py-1 bg-gray-500 shadow rounded-full opacity-50"
+          onClick={() => scroll('left')}
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 px-2 py-1 bg-gray-500 shadow rounded-full opacity-50"
+          onClick={() => scroll('right')}
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
 
-      <div
-        ref={scrollRef}
-        className="flex gap-6 overflow-x-auto whitespace-nowrap scrollbar-hide scroll-smooth"
-      >
-        {items.map((text, index) => (
-          <span key={index} className="text-gray-700 text-sm shrink-0">
-            {text}
-          </span>
-        ))}
+        {/* Scrollable Menu */}
+        <div
+          ref={scrollRef}
+          className="scrollbar-hide relative flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-8"
+        >
+          <ul className="flex my-4 border-b flex-nowrap">
+            {menuItems.map((item, index) => (
+              <li key={index} className="whitespace-nowrap px-3 text-base text-gray-600">
+                <button className="hover:text-green-600 transition">{item}</button>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-
-      <button
-        onClick={() => scroll('right')}
-        className="p-2 rounded-full bg-gray-400 text-white"
-        aria-label="Scroll Right"
-      >
-        <ChevronRight size={20} />
-      </button>
     </div>
   );
 };

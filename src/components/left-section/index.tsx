@@ -11,12 +11,35 @@ const LeftSection = () => {
 
     return (
         <div className="w-[65%] flex flex-col gap-10">
-            <Menus />
-            <Instructor instructor={data?.sections[2].values[0]} name={data?.sections[2].name}/>
-            <Features features={data?.sections[3].values} name={data?.sections[3].name}/>
-            <Pointers pointers= {data?.sections[5].values} name={data?.sections[5].name}/>
-            <About abouts= {data?.sections[7].values} name={data?.sections[7].name} />
-            <FeatureExplanations featureExps= {data?.sections[8].values} name={data?.sections[8].name}/>
+            <Menus
+                menuItems={[
+                    data?.sections[2].name,
+                    data?.sections[3].name,
+                    data?.sections[5].name,
+                    data?.sections[7].name,
+                    data?.sections[8].name,
+                ]}
+            />
+            <Instructor
+                instructor={data?.sections[2].values[0]}
+                name={data?.sections[2].name}
+            />
+            <Features
+                features={data?.sections[3].values}
+                name={data?.sections[3].name}
+            />
+            <Pointers
+                pointers={data?.sections[5].values}
+                name={data?.sections[5].name}
+            />
+            <About
+                abouts={data?.sections[7].values}
+                name={data?.sections[7].name}
+            />
+            <FeatureExplanations
+                featureExps={data?.sections[8].values}
+                name={data?.sections[8].name}
+            />
         </div>
     );
 };

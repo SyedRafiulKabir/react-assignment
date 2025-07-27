@@ -42,12 +42,14 @@ type Course = {
     // delivery_method: string;
 };
 
-
+type LangType = "EN" | "BN";
 
 type DataContextType = {
     data: Course | null;
     loading: boolean;
     error: string | null;
+    lang: LangType;
+    setLang: (lang: LangType) => void;
 };
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -58,9 +60,11 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
     const [data, setData] = useState<Course | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
+    const [lang, setLang] = useState<LangType>("EN");
 
     useEffect(() => {
-        fetch(import.meta.env.VITE_API_URL)
+        setLoading(true);
+        fetch(`${import.meta.env.VITE_API_URL}=${lang.toLowerCase()}`)
             .then((res) => {
                 if (!res.ok) throw new Error("Failed to fetch data");
                 return res.json();
@@ -68,10 +72,10 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({
             .then((json) => setData(json.data))
             .catch((err) => setError(err.message))
             .finally(() => setLoading(false));
-    }, []);
+    }, [lang]);
 
     return (
-        <DataContext.Provider value={{ data, loading, error }}>
+        <DataContext.Provider value={{ data, loading, error, lang, setLang }}>
             {children}
         </DataContext.Provider>
     );
