@@ -1,9 +1,17 @@
-import { Button } from "@/components/ui/button";
+import Navbar from "./components/navbar";
+import Home from "./components/home";
+import { useData } from "./context/data-context";
+import PageLoader from "./components/page-loader";
 
 function App() {
+    const { loading } = useData();
+
+    if (loading) return <PageLoader />;
+
     return (
-        <div className="flex min-h-svh flex-col items-center justify-center">
-            <Button>Click me</Button>
+        <div className="h-screen w-full relative">
+            <Navbar />
+            <Home />
         </div>
     );
 }
