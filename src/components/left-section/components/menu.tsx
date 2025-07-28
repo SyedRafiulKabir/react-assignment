@@ -22,13 +22,15 @@ const Menus = ({menuItems}: MenusProps) => {
       <div className="relative">
         {/* Scroll Buttons */}
         <button
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 px-2 py-1 bg-gray-500 shadow rounded-full opacity-50"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 px-1 py-1 bg-white shadow rounded-full opacity-100 border border-solid border-gray-300
+"
           onClick={() => scroll('left')}
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 px-2 py-1 bg-gray-500 shadow rounded-full opacity-50"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 px-1 py-1 bg-white shadow rounded-full opacity-100 border border-solid border-gray-300
+"
           onClick={() => scroll('right')}
         >
           <ChevronRight className="w-5 h-5" />

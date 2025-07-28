@@ -9,7 +9,7 @@ function App() {
     if (loading) return <PageLoader />;
 
     return (
-        <div className="h-screen w-full relative">
+        <div className="h-screen w-full">
             <Navbar />
             <Home />
         </div>

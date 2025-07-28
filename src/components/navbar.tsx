@@ -73,7 +73,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className=" sticky top-0 z-50 border-b bg-white md:h-[65px]">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b md:h-[65px]">
             <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-3 px-4 py-3 md:px-7">
                 {/* Mobile Menu Button (Hidden on desktop) */}
                 <div className="md:hidden">

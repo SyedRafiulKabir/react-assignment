@@ -6,13 +6,16 @@ import Trailer from "./components/trailer";
 
 const RightSection = () => {
     const { data } = useData();
+
     return (
-        <div className="w-[25%] flex flex-col gap-10 rounded-sm absolute top-28 right-[10rem]">
-            <Card className="rounded-sm p-2">
-                {data && <Trailer medias={data?.media} />}
-                {data && <Cta text={data.cta_text.name}/>}
-                {data && <CheckList checkLists={data?.checklist}/>}
-            </Card>
+        <div>
+            <div className="w-[25%] flex flex-col gap-5 rounded-sm absolute top-28 right-[10rem]">
+                <Card className="rounded-none pt-2">
+                    {data && <Trailer medias={data?.media} />}
+                    {data && <Cta text={data.cta_text.name} />}
+                    {data && <CheckList checkLists={data?.checklist} />}
+                </Card>
+            </div>
         </div>
     );
 };

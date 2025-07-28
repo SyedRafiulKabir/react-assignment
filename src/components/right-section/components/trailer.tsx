@@ -74,13 +74,15 @@ const Trailer: React.FC<TrailerProps> = ({ medias }) => {
 
                 {/* Arrows for Main Carousel */}
                 <button
-                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 border border-solid border-gray-300
+"
                     onClick={scrollPrev}
                 >
                     <ChevronLeft className="w-4 h-4 text-black" />
                 </button>
                 <button
-                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 border border-solid border-gray-300
+"
                     onClick={scrollNext}
                 >
                     <ChevronRight className="w-4 h-4 text-black" />
